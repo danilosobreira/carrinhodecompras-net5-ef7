@@ -8,10 +8,10 @@ namespace CarrinhodeCompras.Business
     public class PedidoBLL
     {
         #region Propriedades
-        private static IRepositorio<Produto> _repositorioProduto;
-        private static IRepositorio<Pedido> _repositorioPedido;
-        private static IRepositorio<PedidoItem> _repositorioPedidoItem;
-        private static Pedido _pedido;
+        private IRepositorio<Produto> _repositorioProduto;
+        private IRepositorio<Pedido> _repositorioPedido;
+        private IRepositorio<PedidoItem> _repositorioPedidoItem;
+        private Pedido _pedido;
         #endregion
 
         #region Construtor(es)
