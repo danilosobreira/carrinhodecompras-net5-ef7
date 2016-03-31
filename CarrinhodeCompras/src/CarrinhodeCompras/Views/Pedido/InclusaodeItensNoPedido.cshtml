@@ -1,0 +1,45 @@
+@model Pedido
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+<form asp-action="IncluirItens">
+    <div class="form-horizontal col-md-8">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>@Html.HiddenFor(model => Model.Id)</th>
+                <th>@Html.DisplayNameFor(model => Model.Itens[0].Produto.Nome)</th>
+                <th>@Html.DisplayNameFor(model => Model.Itens[0].Produto.Preco)</th>
+                <th>@Html.DisplayNameFor(model => Model.Itens[0].Quantidade)</th>
+            </tr>
+
+            @for (var i = 0; i < Model.Itens.Count(); i++)
+            {
+                <tr>
+                    <td class="col-md-1">
+                        @Html.CheckBoxFor(model => Model.Itens[i].Selecionado)
+                        @Html.HiddenFor(model => Model.Itens[i].Produto.Id)
+                    </td>
+                    <td class="col-md-5">
+                        @Html.DisplayFor(model => Model.Itens[i].Produto.Nome)
+                    </td>
+                    <td class="col-md-1">
+                        @Html.HiddenFor(model => Model.Itens[i].Produto.Preco)
+                        @Html.DisplayFor(model => Model.Itens[i].Produto.Preco)
+                    </td>
+                    <td class="col-md-1">
+                        @Html.EditorFor(model => Model.Itens[i].Quantidade, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <div class="form-group">
+            <a asp-action="Index" class="btn btn-default btn-sm">Voltar</a>
+            <input type="submit" value="Salvar" class="btn btn-default btn-sm" />
+        </div>
+    </div>
+</form>

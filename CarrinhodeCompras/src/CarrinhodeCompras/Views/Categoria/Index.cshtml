@@ -1,0 +1,38 @@
+@model IEnumerable<Categoria>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+<p class="col-md-12">
+    <a asp-action="Create" class="btn btn-default btn-sm">Novo</a>
+</p>
+<div class="col-md-6">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success btn-xs">Visualizar</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-default btn-xs">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-xs">Excluir</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p class="col-md-12">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-default btn-sm">Voltar</a>
+</p>

@@ -1,0 +1,45 @@
+@model CarrinhodeCompras.Models.Pedido
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pedido</h4>
+    <hr />
+    <div class="form-horizontal col-md-7">
+        <p>
+            <b>@Html.DisplayNameFor(model => model.ValorTotal)</b>             
+            @Html.DisplayFor(model => model.ValorTotal) 
+        </p>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>@Html.DisplayNameFor(model => Model.Itens[0].Produto.Nome)</th>
+                <th>@Html.DisplayNameFor(model => Model.Itens[0].Produto.Preco)</th>
+                <th>@Html.DisplayNameFor(model => Model.Itens[0].Quantidade)</th>
+            </tr>
+
+            @for (var i = 0; i < Model.Itens.Count(); i++)
+            {
+                <tr>
+                    <td class="col-md-5">
+                        @Html.DisplayFor(model => Model.Itens[i].Produto.Nome)
+                    </td>
+                    <td class="col-md-1">
+                        @Html.DisplayFor(model => Model.Itens[i].Produto.Preco)
+                    </td>
+                    <td class="col-md-1">
+                        @Html.DisplayFor(model => Model.Itens[i].Quantidade)
+                    </td>
+                </tr>
+            }
+        </table>
+        <p>
+            <a asp-action="Index" class="btn btn-default btn-sm">Voltar</a>
+        </p>
+    </div>
+</div>
+
